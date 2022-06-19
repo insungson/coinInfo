@@ -17,7 +17,7 @@ import {
 
 const Coins = () => {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
-  // console.log("data: ", data);
+  console.log("data7879: ", data);
 
   return (
     <Container>

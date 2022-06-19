@@ -8,7 +8,7 @@ const Coins = lazy(() => import("@components/coins"));
 const Router = () => {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/:coinId/*" element={<RouteCoin />} />
           <Route

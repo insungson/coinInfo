@@ -25,6 +25,7 @@ export const Coin = styled.li`
     align-items: center;
     padding: 20px;
     transition: color 0.2s ease-out;
+    color: green;
   }
   &:hover {
     a {

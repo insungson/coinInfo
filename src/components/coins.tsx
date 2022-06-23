@@ -3,6 +3,8 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { fetchCoins } from "@utils/api";
 import RingLoader from "react-spinners/RingLoader";
+import { useRecoilState } from "recoil";
+import { isDartAtom } from "../atoms";
 
 import { ICoin } from "@models/coins";
 import {
@@ -18,6 +20,9 @@ import {
 const Coins = () => {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
   console.log("data7879: ", data);
+  const [darkAtom, setDarkAtom] = useRecoilState(isDartAtom);
+
+  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
 
   return (
     <Container>
@@ -26,6 +31,7 @@ const Coins = () => {
       </Helmet>
       <Header>
         <title>코인</title>
+        <button onClick={toggleDarkAtom}>Toggle Mode</button>
       </Header>
       {isLoading ? (
         <Loader>

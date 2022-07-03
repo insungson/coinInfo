@@ -1,22 +1,28 @@
 {
   "files": {
-    "main.js": "/coinInfo/static/js/main.42f10df5.js",
-    "static/js/819.f69c59d1.chunk.js": "/coinInfo/static/js/819.f69c59d1.chunk.js",
-    "static/js/469.f142d189.chunk.js": "/coinInfo/static/js/469.f142d189.chunk.js",
-    "static/js/754.e8f69329.chunk.js": "/coinInfo/static/js/754.e8f69329.chunk.js",
-    "static/js/841.51419709.chunk.js": "/coinInfo/static/js/841.51419709.chunk.js",
-    "static/js/496.8af035a5.chunk.js": "/coinInfo/static/js/496.8af035a5.chunk.js",
+    "main.js": "/coinInfo/static/js/main.6b02a9de.js",
+    "static/js/819.8806024a.chunk.js": "/coinInfo/static/js/819.8806024a.chunk.js",
+    "static/js/310.ec98d7a4.chunk.js": "/coinInfo/static/js/310.ec98d7a4.chunk.js",
+    "static/js/469.a4298138.chunk.js": "/coinInfo/static/js/469.a4298138.chunk.js",
+    "static/js/754.0182143d.chunk.js": "/coinInfo/static/js/754.0182143d.chunk.js",
+    "static/js/922.a72d0474.chunk.js": "/coinInfo/static/js/922.a72d0474.chunk.js",
     "static/js/270.1b7dc269.chunk.js": "/coinInfo/static/js/270.1b7dc269.chunk.js",
+    "static/js/217.097701cb.chunk.js": "/coinInfo/static/js/217.097701cb.chunk.js",
+    "static/js/134.0ccf6775.chunk.js": "/coinInfo/static/js/134.0ccf6775.chunk.js",
+    "static/js/519.aecf0850.chunk.js": "/coinInfo/static/js/519.aecf0850.chunk.js",
     "index.html": "/coinInfo/index.html",
-    "main.42f10df5.js.map": "/coinInfo/static/js/main.42f10df5.js.map",
-    "819.f69c59d1.chunk.js.map": "/coinInfo/static/js/819.f69c59d1.chunk.js.map",
-    "469.f142d189.chunk.js.map": "/coinInfo/static/js/469.f142d189.chunk.js.map",
-    "754.e8f69329.chunk.js.map": "/coinInfo/static/js/754.e8f69329.chunk.js.map",
-    "841.51419709.chunk.js.map": "/coinInfo/static/js/841.51419709.chunk.js.map",
-    "496.8af035a5.chunk.js.map": "/coinInfo/static/js/496.8af035a5.chunk.js.map",
-    "270.1b7dc269.chunk.js.map": "/coinInfo/static/js/270.1b7dc269.chunk.js.map"
+    "main.6b02a9de.js.map": "/coinInfo/static/js/main.6b02a9de.js.map",
+    "819.8806024a.chunk.js.map": "/coinInfo/static/js/819.8806024a.chunk.js.map",
+    "310.ec98d7a4.chunk.js.map": "/coinInfo/static/js/310.ec98d7a4.chunk.js.map",
+    "469.a4298138.chunk.js.map": "/coinInfo/static/js/469.a4298138.chunk.js.map",
+    "754.0182143d.chunk.js.map": "/coinInfo/static/js/754.0182143d.chunk.js.map",
+    "922.a72d0474.chunk.js.map": "/coinInfo/static/js/922.a72d0474.chunk.js.map",
+    "270.1b7dc269.chunk.js.map": "/coinInfo/static/js/270.1b7dc269.chunk.js.map",
+    "217.097701cb.chunk.js.map": "/coinInfo/static/js/217.097701cb.chunk.js.map",
+    "134.0ccf6775.chunk.js.map": "/coinInfo/static/js/134.0ccf6775.chunk.js.map",
+    "519.aecf0850.chunk.js.map": "/coinInfo/static/js/519.aecf0850.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.42f10df5.js"
+    "static/js/main.6b02a9de.js"
   ]
 }

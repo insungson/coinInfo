@@ -7,7 +7,8 @@
       "@utils/*": ["src/utils/*"],
       "@components/*": ["src/components/*"],
       "@models/*": ["src/models/*"],
-      "@chartoptions/*": ["src/chartoptions/*"]
+      "@chartoptions/*": ["src/chartoptions/*"],
+      "@atoms/*": ["src/atoms/*"]
     }
   }
 }

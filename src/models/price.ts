@@ -61,3 +61,14 @@ export interface IChartOptions {
   series: ISeries[];
   options: IOptions;
 }
+
+interface ICandleSeries {
+  name: string;
+  data: { x: Date; y: number[] }[];
+}
+export interface ICandleChartOption {
+  series: ICandleSeries[];
+  options: any;
+  type: "candlestick";
+  height: number;
+}

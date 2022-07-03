@@ -4,6 +4,7 @@ import RingLoader from "react-spinners/RingLoader";
 import RouteCoin from "@routes/coin";
 
 const Coins = lazy(() => import("@components/coins"));
+const Memos = lazy(() => import("@components/memos"));
 
 const Router = () => {
   return (
@@ -11,6 +12,14 @@ const Router = () => {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/:coinId/*" element={<RouteCoin />} />
+          <Route
+            path="/memos"
+            element={
+              <Suspense fallback={<RingLoader size={20} />}>
+                <Memos />
+              </Suspense>
+            }
+          />
           <Route
             path="/"
             element={

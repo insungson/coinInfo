@@ -72,5 +72,6 @@ export const Tab = styled.span<{ isActive: boolean }>`
 export const Button = styled.button`
   padding: 0.5em;
   border-radius: 6px;
-  background-color: white;
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
 `;

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet";
 import {
@@ -7,10 +8,7 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "@utils/api";
-import Chart from "@components/chart";
-import Price from "@components/Price";
 import {
   Title,
   Loader,
@@ -25,9 +23,13 @@ import {
 } from "@components/styledComponents/coin";
 import { RouteParams, RouteState, InfoData, PriceData } from "@models/coin";
 import { RingLoader } from "react-spinners";
+import MemoForm from "@components/memoForm";
+import { useSetRecoilState, useRecoilValue } from "recoil";
+import { currentCoinPage, getOneCoinMemos } from "@atoms/memosAtom";
 
 const Coin = () => {
   const navigate = useNavigate();
+  const setCurrentCoinName = useSetRecoilState(currentCoinPage);
   const { coinId } = useParams() as RouteParams; // V6 는 useParams 의 타입이 string | undefined 인지 알아서 체크해준다.
   const { state, pathname } = useLocation() as RouteState;
   console.log("pathname: ", pathname);
@@ -43,6 +45,14 @@ const Coin = () => {
     }
   );
   const loading = infoLoading || tickersLoading;
+
+  // useEffect for setCuurentCoinPage (메모에 입력한 코인 만 불러오기 위함..)
+  useEffect(() => {
+    //@ts-ignore
+    if (infoData) {
+      setCurrentCoinName(infoData?.name);
+    }
+  }, [infoData]);
 
   const onClicktoList = () => {
     navigate("/");
@@ -107,6 +117,7 @@ const Coin = () => {
               </Tab>
             </Tabs>
             <Outlet />
+            {infoData && <MemoForm coinName={infoData?.name} />}
           </>
         )}
       </Container>

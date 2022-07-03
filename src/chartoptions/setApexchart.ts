@@ -1,4 +1,5 @@
-import { IHistorical, IChartOptions } from "@models/price";
+import { IHistorical, IChartOptions, ICandleChartOption } from "@models/price";
+import moment from "moment";
 
 export class ApexChartOption {
   public data: IHistorical[];
@@ -51,6 +52,59 @@ export class ApexChartOption {
           y: {
             formatter: (value) => `$${value.toFixed(2)}`,
           },
+        },
+      },
+    };
+  }
+
+  getCandleStickChartOption(): ICandleChartOption {
+    return {
+      type: "candlestick",
+      height: 350,
+      series: [
+        {
+          name: "CandleChart",
+          data: this.data.map((obj) => ({
+            x: new Date(obj.time_close),
+            y: [obj.open, obj.high, obj.low, obj.close],
+          })),
+        },
+      ],
+      options: {
+        chart: {
+          type: "candlestick",
+          height: 350,
+          toolbar: {
+            show: false,
+          },
+          background: "transparent",
+        },
+        // title: {
+        //   text: "CandleStick Chart",
+        //   align: "left",
+        // },
+        grid: { show: false },
+        xaxis: {
+          type: "category",
+          axisBorder: { show: false },
+          axisTicks: { show: false },
+          // labels: { show: false },
+          labels: {
+            show: false,
+            formatter: function (val: any) {
+              return moment(val).format("MMM DD HH:mm");
+            },
+          },
+        },
+        yaxis: {
+          tooltip: {
+            enabled: true,
+          },
+          show: false,
+        },
+        tooltip: {
+          enabled: true,
+          theme: "dark",
         },
       },
     };

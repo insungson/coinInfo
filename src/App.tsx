@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 import Router from "./Router";
 import { darkTheme, lightTheme } from "./theme";
 import { useRecoilValue } from "recoil";
-import { isDartAtom } from "./atoms";
+import { isDartAtom } from "@atoms/colorAtoms";
 
 function App() {
   const isDark = useRecoilValue(isDartAtom);

@@ -16,7 +16,7 @@ export const Header = styled.header`
 export const CoinsList = styled.ul``;
 
 export const Coin = styled.li`
-  background-color: white;
+  background-color: ${(props) => props.theme.textColor};
   color: ${(props) => props.theme.bgColor};
   border-radius: 15px;
   margin-bottom: 10px;

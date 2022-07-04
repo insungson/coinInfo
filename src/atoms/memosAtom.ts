@@ -52,7 +52,13 @@ export const getAllCoinMemos = selector({
   key: "getAllCoinMemos",
   get: ({ get }) => {
     const allMemos = get(memosState);
-    // 코인타입리스트 불러오기
-    const coinTypeList = allMemos?.map((item) => item.coinType);
+    // 코인타입리스트 불러오기 (중복제거 처리하기)
+    const coinTypeList = Array.from(
+      new Set(allMemos?.map((item) => item.coinType))
+    );
+    // [[{},{}],[{},{},{}], ...];  형태로 쪼개기
+    return coinTypeList.map((coinType) => {
+      return allMemos.filter((memoObj) => memoObj.coinType === coinType);
+    });
   },
 });

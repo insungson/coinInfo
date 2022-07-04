@@ -32,6 +32,7 @@ const Chart = ({ coinId }: ChartProps) => {
         <RingLoader />
       ) : (
         chartoptions && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-ignore  // ApexCharts 의 type을 전부 맞추기 어렵기 때문에 이렇게 처리함.
           <ApexCharts {...chartoptions} />
         )

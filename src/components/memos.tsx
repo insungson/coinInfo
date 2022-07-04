@@ -13,6 +13,7 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 import MemoForm from "@components/memoForm";
+import MemosList from "./memosList";
 
 const Memos = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const Memos = () => {
         <Title>메모 목록</Title>
       </Header>
       <MemoForm coinName={null} />
+      <MemosList coinType={null} />
     </Container>
   );
 };

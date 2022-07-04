@@ -33,6 +33,7 @@ const Price = ({ coinId }: ChartProps) => {
         <RingLoader />
       ) : (
         chartOptions && (
+          /* eslint-disable @typescript-eslint/ban-ts-comment */
           //@ts-ignore
           <ApexCharts {...chartOptions} />
         )

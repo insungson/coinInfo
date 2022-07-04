@@ -48,6 +48,7 @@ const Coin = () => {
 
   // useEffect for setCuurentCoinPage (메모에 입력한 코인 만 불러오기 위함..)
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     if (infoData) {
       setCurrentCoinName(infoData?.name);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
@@ -38,18 +38,21 @@ const Coins = () => {
     }
   }, [data]);
 
-  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
+  const toggleDarkAtom = useCallback(() => setDarkAtom((prev) => !prev), []);
 
   const moveToMemos = () => {
     navigate("/memos");
   };
 
   // 이미지 에러시 다른 이미지 대체함수
-  const handleImgTagError = (event: React.SyntheticEvent<HTMLImageElement>) => {
-    event.currentTarget.src =
-      // "https://www.kindacode.com/wp-content/uploads/2021/08/oops.png";
-      `${process.env.PUBLIC_URL + "/icons/_con.png"}`;
-  };
+  const handleImgTagError = useCallback(
+    (event: React.SyntheticEvent<HTMLImageElement>) => {
+      event.currentTarget.src =
+        // "https://www.kindacode.com/wp-content/uploads/2021/08/oops.png";
+        `${process.env.PUBLIC_URL + "/icons/_con.png"}`;
+    },
+    []
+  );
 
   return (
     <Container>

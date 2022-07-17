@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet";
 import {
@@ -24,15 +24,18 @@ import {
 import { RouteParams, RouteState, InfoData, PriceData } from "@models/coin";
 import { RingLoader } from "react-spinners";
 import MemoForm from "@components/memoForm";
-import { useSetRecoilState, useRecoilValue } from "recoil";
+import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
 import { currentCoinPage, getOneCoinMemos } from "@atoms/memosAtom";
+import MemosList from "./memosList";
 
 const Coin = () => {
   const navigate = useNavigate();
-  const setCurrentCoinName = useSetRecoilState(currentCoinPage);
+  const [currentCoinName, setCurrentCoinName] = useRecoilState(currentCoinPage);
+  // const currentCoinName = useRecoilValue(currentCoinPage);
+  // console.log("currentCoinName: ", currentCoinName);
+  // const setCurrentCoinName = useSetRecoilState(currentCoinPage);
   const { coinId } = useParams() as RouteParams; // V6 는 useParams 의 타입이 string | undefined 인지 알아서 체크해준다.
   const { state, pathname } = useLocation() as RouteState;
-  console.log("pathname: ", pathname);
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
     ["infos", coinId],
     () => fetchCoinInfo(coinId)
@@ -51,13 +54,14 @@ const Coin = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     if (infoData) {
+      console.log("AlwaysInfoData?: ", infoData);
       setCurrentCoinName(infoData?.name);
     }
   }, [infoData]);
 
-  const onClicktoList = () => {
+  const onClicktoList = useCallback(() => {
     navigate("/");
-  };
+  }, [navigate]);
 
   return (
     <>
@@ -119,6 +123,7 @@ const Coin = () => {
             </Tabs>
             <Outlet />
             {infoData && <MemoForm coinName={infoData?.name} />}
+            {infoData && <MemosList coinType={infoData?.name} />}
           </>
         )}
       </Container>

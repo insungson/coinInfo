@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { coinListState, memosState, MemoState } from "@atoms/memosAtom";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -12,6 +13,7 @@ const MemoForm = ({ coinName }: { coinName: string | null }) => {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm<IMemos>();
 
   const onSubmit: SubmitHandler<IMemos> = (data) => {
@@ -27,10 +29,17 @@ const MemoForm = ({ coinName }: { coinName: string | null }) => {
         writedAt: Date.now(),
         memoState: MemoState.planingToBuy,
         isModified: false,
+        isModifyOpen: false,
       })
     );
     reset();
   };
+
+  useEffect(() => {
+    if (!!coinName) {
+      setValue("coinType", coinName);
+    }
+  }, [coinName]);
 
   // const onSelectCoinName = (event: FormEvent<HTMLSelectElement>) => {
   //   const { value } = event.currentTarget;
@@ -57,6 +66,7 @@ const MemoForm = ({ coinName }: { coinName: string | null }) => {
             <>there is no coinNameList</>
           )}
         </span>
+        <p>{errors.coinType?.message}</p>
       </FromItem>
 
       <FromItem>

@@ -11,12 +11,13 @@ export interface IMemos {
   buyPrice: number; // 구입 가격
   coinNumber: number; // 구입 갯수
   targetPrice: number; // 목표 가격
-  sellPrice?: number; // 판 가격
+  sellPrice?: number | null; // 판 가격
   coinType: string; // 코인타입
   writedAt: number; // 최초 작성날짜
   memoState: MemoState; // 메모 상태
   modifiedAt?: number; // 마지막 수정날짜
   isModified: boolean; // 1회 이상 수정 시 true 처리
+  isModifyOpen: boolean; // 수정 폼 띄우기 여부
 }
 
 // 전체 메모정보

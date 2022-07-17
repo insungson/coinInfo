@@ -58,6 +58,7 @@ export const FromItem = styled.div`
   align-content: center;
   width: 80%;
   margin-top: 10px;
+  justify-content: space-between;
   span:first-child {
     font-size: 10px;
     font-weight: 400;
@@ -68,10 +69,14 @@ export const FromItem = styled.div`
   }
   span:last-child {
     margin-left: 10px;
+    float: right;
     /* margin-top: 5px; */
   }
   p {
     color: ${(props) => props.theme.textColor};
     font-size: 10px;
+  }
+  input {
+    width: 100px;
   }
 `;

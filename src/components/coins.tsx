@@ -6,7 +6,7 @@ import { fetchCoins } from "@utils/api";
 import RingLoader from "react-spinners/RingLoader";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { isDartAtom } from "@atoms/colorAtoms";
-import { coinListState, currentCoinPage } from "@atoms/memosAtom";
+import { coinListObjState, currentCoinPage } from "@atoms/memosAtom";
 import DarkModeToggle from "react-dark-mode-toggle";
 
 import { ICoin } from "@models/coins";
@@ -25,14 +25,14 @@ const Coins = () => {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
   console.log("data7879: ", data);
   const [darkAtom, setDarkAtom] = useRecoilState(isDartAtom);
-  const setCoinNameList = useSetRecoilState(coinListState);
+  const setCoinObjList = useSetRecoilState(coinListObjState);
   const setCurrentCoinPage = useSetRecoilState(currentCoinPage);
   const navigate = useNavigate();
 
   // 코인 이름 리스트 100개만 recoil의 coinListState에 저장
   useEffect(() => {
     if (data) {
-      setCoinNameList(data.slice(0, 100).map((item) => item.name));
+      setCoinObjList(data.slice(0, 100));
       // 현재 페이지 null 처리를 위한 setCurrentCoinPage
       setCurrentCoinPage(null);
     }

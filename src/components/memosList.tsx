@@ -1,6 +1,5 @@
 import { FC, useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { MemoList, Memo, FromItem } from "@components/styledComponents/memos";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   currentCoinPage,
@@ -9,6 +8,7 @@ import {
   MemoState,
   IMemos,
   memosState,
+  coinListObjState,
 } from "@atoms/memosAtom";
 import moment from "moment";
 import {
@@ -21,8 +21,11 @@ import {
 } from "@components/styledComponents/memoList";
 import MemoModifyForm from "./memoModifyForm";
 import MemosListNormal from "./memosListNormal";
+import { useNavigate } from "react-router-dom";
 
 const MemosList: FC<{ coinType: string | null }> = ({ coinType }) => {
+  const navigate = useNavigate();
+  const coinInfoObjList = useRecoilValue(coinListObjState);
   const setMemoState = useSetRecoilState(memosState);
   // coinType 가 null 일땐 전체 메모를 불러오고
   // 아닐땐 필터된 메모리스트를 가져온다.
@@ -58,13 +61,28 @@ const MemosList: FC<{ coinType: string | null }> = ({ coinType }) => {
     [setMemoState]
   );
 
+  const onClickMoveToPage = useCallback(
+    (coinType: string) => {
+      console.log("coinInfoObjList: ", coinInfoObjList);
+      if (coinInfoObjList) {
+        const infoObj = coinInfoObjList.find((item) => item.name === coinType);
+        navigate(`/${infoObj?.id}`);
+      }
+    },
+    [navigate, coinInfoObjList]
+  );
+
   return (
     <>
       {coinType === null &&
         (allCoinTypeMemos && allCoinTypeMemos.length > 0 ? (
           allCoinTypeMemos.map((coinObj, coinObjIndex) => (
             <MemoCardBox key={coinObjIndex}>
-              <div>{coinObj[0].coinType}</div>
+              <div>
+                <Button onClick={() => onClickMoveToPage(coinObj[0].coinType)}>
+                  {coinObj[0].coinType}
+                </Button>
+              </div>
               <MemoCardItem>
                 <MemoCardUl>
                   {coinObj.map((item, index) => (

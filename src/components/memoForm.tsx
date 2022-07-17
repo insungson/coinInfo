@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { coinListState, memosState, MemoState } from "@atoms/memosAtom";
+import { coinListObjState, memosState, MemoState } from "@atoms/memosAtom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IMemos } from "@atoms/memosAtom";
 import { FormBox, FromItem, Button } from "@components/styledComponents/memos";
 
 const MemoForm = ({ coinName }: { coinName: string | null }) => {
-  const [coinNameList, setCoinNameList] = useRecoilState(coinListState);
+  const [coinObjList, setCoinObjList] = useRecoilState(coinListObjState);
   const setMemoState = useSetRecoilState(memosState);
   const {
     register,
@@ -50,15 +50,15 @@ const MemoForm = ({ coinName }: { coinName: string | null }) => {
       <FromItem>
         <span>Select Coin: </span>
         <span>
-          {coinNameList && coinNameList?.length > 0 ? (
+          {coinObjList && coinObjList?.length > 0 ? (
             <select
-              defaultValue={coinName === null ? coinNameList[0] : coinName}
+              defaultValue={coinName === null ? coinObjList[0].name : coinName}
               disabled={coinName === null ? false : true}
               {...register("coinType", { required: "You have to Select one" })}
             >
-              {coinNameList.map((coinName) => (
-                <option key={coinName} value={coinName}>
-                  {coinName}
+              {coinObjList.map((coinObj) => (
+                <option key={coinObj.id} value={coinObj.name}>
+                  {coinObj.name}
                 </option>
               ))}
             </select>

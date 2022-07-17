@@ -1,4 +1,5 @@
 import { atom, selector } from "recoil";
+import { ICoin } from "@models/coins";
 
 export enum MemoState {
   "planingToBuy" = "PlaningToBuy",
@@ -33,8 +34,8 @@ export const currentCoinPage = atom<string | null>({
 });
 
 // 코인 타입 리스트 모음
-export const coinListState = atom<string[] | null>({
-  key: "coinListState",
+export const coinListObjState = atom<ICoin[] | null>({
+  key: "coinListObjState",
   default: null,
 });
 

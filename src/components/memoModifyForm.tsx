@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { coinListState, memosState, MemoState } from "@atoms/memosAtom";
+import { memosState, MemoState } from "@atoms/memosAtom";
 import { useForm, SubmitHandler, useWatch } from "react-hook-form";
 import { IMemos } from "@atoms/memosAtom";
 import { FormBox, FromItem, Button } from "@components/styledComponents/memos";
